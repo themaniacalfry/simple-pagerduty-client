@@ -9,9 +9,10 @@ Connection:
 
 ```
 var PagerDuty=require('pagerDuty-client')
+var policyId = 'POLICYID'
 var pgClient=new PagerDuty({
     authToken: "xwbBq56N1ZpSs4i7wbiB”,
-    uri: '?time_zone=UTC&include%5B%5D=users&escalation_policy_ids%5B%5D=PG8YD25&earliest=true'
+    uri: '?time_zone=UTC&include%5B%5D=users&escalation_policy_ids%5B%5D=${policyId}&earliest=true'
 });
 ```
 
