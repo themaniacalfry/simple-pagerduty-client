@@ -3,11 +3,12 @@ class PagerDuty {
     constructor(params) {
         this.serverURL = 'https://api.pagerduty.com'
         this.authToken = params.authToken;
+        this.uri = params.uri;
     }
     getServices()
     {
         const options = {
-            url: `${this.serverURL}/services`,
+            url: `${this.serverURL}/services${this.uri}`,
             method: "GET",
             headers: {
               Accept: "application/vnd.pagerduty+json;version=2",
@@ -36,7 +37,7 @@ class PagerDuty {
     }
     getIncidents() {
         const options = {
-            url: `${this.serverURL}/incidents`,
+            url: `${this.serverURL}/incidents${this.uri}`,
             method: "GET",
             headers: {
               Accept: "application/vnd.pagerduty+json;version=2",
@@ -65,7 +66,7 @@ class PagerDuty {
     }
     createIncident(source,newIncident){
         const options = {
-            url: `${this.serverURL}/incidents`,
+            url: `${this.serverURL}/incidents${this.uri}`,
             method: "POST",
             headers: {
               Accept: "application/vnd.pagerduty+json;version=2",
@@ -98,13 +99,13 @@ class PagerDuty {
     }
     getOnCallPersonelList() {
         const options = {
-            url: `${this.serverURL}/oncalls`,
+            url: `${this.serverURL}/oncalls${this.uri}`,
             method: "GET",
             headers: {
               Accept: "application/vnd.pagerduty+json;version=2",
               Authorization: `Token token=${this.authToken}`
             } ,
-            rejectUnauthorized:false
+            rejectUnauthorized:false,
           }; 
           return new Promise(function(resolve,reject){
               var parsedBody;
@@ -127,7 +128,7 @@ class PagerDuty {
     }
     getSchedules() {
         const options = {
-            url: `${this.serverURL}/schedules`,
+            url: `${this.serverURL}/schedules${this.uri}`,
             method: "GET",
             headers: {
               Accept: "application/vnd.pagerduty+json;version=2",
